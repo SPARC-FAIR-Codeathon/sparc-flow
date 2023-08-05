@@ -1,7 +1,8 @@
 import sys
 
 def main():
-    print("Hello, world!")
+    a = "let's say "
+    print(a,"Hello, world!")
 
 if __name__ == "__main__":
     main()

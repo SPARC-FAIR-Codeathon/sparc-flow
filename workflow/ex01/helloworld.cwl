@@ -3,9 +3,10 @@ class: CommandLineTool
 baseCommand: python3
 inputs:
   script:
-    type: File
+    type: File?
     inputBinding:
       position: 1
+      loadContents: true
 outputs:
   output:
     type: stdout
