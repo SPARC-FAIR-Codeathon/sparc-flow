@@ -54,6 +54,8 @@ Best practices to make workflows and tools FAIR
 
 Supported by [58 organisations](https://dockstore.org/organizations) including: 
 
+Workflow language agnostic implementation (support for WDL, Nextflow etc will be included in the future)
+
 Examples and guided tutorials have been created to demonstrate each of the features above. 
 
 ## Impact
