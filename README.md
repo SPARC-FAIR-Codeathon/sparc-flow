@@ -51,7 +51,6 @@ Information regarding [how to navigate a SPARC dataset](https://docs.sparc.scien
 ### Pre-requisites 
 - [Git](https://git-scm.com/)
 - Python. Tested on:
-   - 3.8.6
    - 3.9
    
 ### PyPI
