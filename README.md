@@ -121,7 +121,7 @@ Zenodo. https://doi.org/XXXX/zenodo.XXXX.
 ```
 
 ## FAIR practices
-We have assessed the FAIRness of our sparc-flow tool against the FAIR Principles established for research software. The details are available in the following [document](https://docs.google.com/document/d/1l8rj2_ZYOtgT5mfvetQNtaZ8vdoJvuVzxI9XXzdkHHI/edit).
+We have assessed the FAIRness of our sparc-flow tool against the FAIR Principles established for research software. The details are available in the following [document](https://docs.google.com/document/d/1az_LXPivQvaofTsiMktJaWpyy2W_xKGX/edit).
 
 ## License
 sparc-flow is fully open source and distributed under the very permissive Apache License 2.0. See [LICENSE](https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/main/LICENSE) for more information.
