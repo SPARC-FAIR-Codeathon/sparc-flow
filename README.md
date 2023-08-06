@@ -8,7 +8,7 @@ A Python tool to create tools and workflows for processing SPARC datasets in acc
 [![MIT License][license-shield]][license-url]
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 <!--* [![DOI](https://zenodo.org/badge/XXXX.svg)](https://zenodo.org/badge/latestdoi/XXXXX) -->
-[![PyPI version fury.io](https://badge.fury.io/py/2023-team-3.svg)](https://pypi.python.org/pypi/2023-team-3/)
+[![PyPI version fury.io](https://badge.fury.io/py/sparc-flow.svg)](https://pypi.python.org/pypi/sparc-flow/)
 
 ## Table of contents
 * [About](#about)
