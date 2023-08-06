@@ -27,7 +27,9 @@ A Python tool to create tools and workflows for processing SPARC datasets in acc
 * [Acknowledgements](#acknowledgements)
 
 ## About
+This is the repository of Team sparc-flow (Team #3) of the 2023 SPARC Codeathon. Click [here](https://sparc.science/help/2023-sparc-fair-codeathon) to find out more about the SPARC Codeathon 2024. Check out the [Team Section](#team) of this page to find out more about our team members.
 
+No work was done on this project prior to the Codeathon.
 
 ## Introduction
 The NIH Common Fund program on **[Stimulating Peripheral Activity to Relieve Conditions (SPARC)](https://commonfund.nih.gov/sparc) focuses on understanding peripheral nerves** (nerves that connect the brain and spinal cord to the rest of the body), **how their electrical signals control internal organ function**, and **how therapeutic devices could be developed to modulate electrical activity in nerves to improve organ function**. This may provide a potentially powerful way to treat a diverse set of common conditions and diseases such hypertension, heart failure, gastrointestinal disorders, and more. 60 research groups spanning 90 institutions and companies contribute to SPARC and work across over 15 organs and systems in 8 species.
