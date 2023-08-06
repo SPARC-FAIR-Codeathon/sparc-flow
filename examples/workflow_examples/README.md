@@ -10,3 +10,5 @@
   ```bash
       cwltool hello_world.cwl inp_job.yml
   ```
+
+dockstore tool launch --local-entry hello_world.cwl --yaml inp_job.yml
