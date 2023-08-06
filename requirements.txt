@@ -1,1 +1,2 @@
-scriptcwl==0.8.1
+scriptcwl==0.8.1 
+sparc-me==1.0.12
