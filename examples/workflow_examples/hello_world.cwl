@@ -11,3 +11,4 @@ outputs:
   output:
     type: stdout
 stdout: output.txt
+
