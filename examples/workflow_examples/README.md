@@ -8,5 +8,5 @@
     ```
 - Run example `Hello world`
   ```bash
-      cwltool helloworld.cwl inp-job.yml
+      cwltool hello_world.cwl inp_job.yml
   ```
