@@ -51,11 +51,9 @@ Workflows can be developed that apply tools (e.g. segmentation of images, or run
 
 ## The problem
 There is **currently no option for**:
-- **enabling users to easily describe workflows and tools in fair manner and run workflows that use SPARC data locally or in cloud computing platforms**
+- **enabling users to easily describe and run workflows that use SPARC data in a FAIR manner locally or from cloud computing platforms**
 - **ensuring reproducibility of workflow results**
 - **enabling reuse of tools developed for processing SPARC data to create new workflows** (tools are currently bundled within and tailored to specific SPARC datasets)
-
-This limits the ability of members of the SPARC and the wider scientific communities  to apply FAIR principles for:
 
 ## Our solution - sparc-flow
 To address this problem, we have **developed a Python module called the SPARC Flow (sparc-flow)** that can be used to describe tools and workflows for processing SPARC datasets in accordance with FAIR principles by:
