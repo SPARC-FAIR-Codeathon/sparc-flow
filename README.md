@@ -90,7 +90,7 @@ sparc-flow will elevate the impact of the SPARC program by providing the fundame
   - have large-scale HPC facilities that are not available in their country.
 - **Supporting reuse of tools** created by users for developing novel workflows without expending limited resources in re-inventing the wheel.
 
-Ultimately, its our **vision to include standardised workflow and tool descriptions in knowledge bases to support automated assembly and execution of workflows** (e.g. for [creating digital tiwns for precision medicine applications](https://doi.org/10.52843/cassyni.6d6bvf)).
+Ultimately, **our vision is to include standardised workflow and tool descriptions in knowledge bases to support automated assembly and execution of workflows** (e.g. for [creating digital tiwns for precision medicine applications](https://doi.org/10.52843/cassyni.6d6bvf)).
   
 ## Future developments
 - support for WDL, Nextflow, and Galaxy workflow languages that are used in scientific research platforms.
