@@ -228,9 +228,9 @@ def get_sparc_dataset_and_process(number):
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
     plt.show()  
-
+    
     with open("output.txt", 'w') as f:
-        f.write(str(time))
+        f.write(str(time))  
 
 @click.command()
 @click.argument('number', type=int)
