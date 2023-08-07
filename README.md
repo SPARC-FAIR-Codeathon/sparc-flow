@@ -95,6 +95,8 @@ Future developments of sparc-flow include:
 - [Git](https://git-scm.com/)
 - Python. Tested on:
    - 3.9
+- Operating system. Tested on:
+  - Ubuntu 18
    
 ### PyPI
 
@@ -108,7 +110,7 @@ pip install sparc-flow
 #### Downloading source code
 Clone the sparc-flow repository from github, e.g.:
 ```
-git clone git@github.com:SPARC-FAIR-Codeathon/2023-team-3.git
+git clone https://github.com/SPARC-FAIR-Codeathon/2023-team-3.git
 ```
 
 #### Installing dependencies
