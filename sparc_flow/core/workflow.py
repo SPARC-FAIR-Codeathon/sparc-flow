@@ -1,4 +1,5 @@
 from scriptcwl import WorkflowGenerator
+from sparc_me import Dataset
 import subprocess
 import os
 
@@ -39,6 +40,16 @@ class Workflow(WorkflowGenerator):
 
         self.add_outputs(final_answer=tool_output) 
         self.save(f'{self.tool_dir}/workflow.cwl', mode='abs')    
+
+    def create_sds(self, path):
+        dataset_tool = Dataset()
+        version = "2.0.0"
+        dataset_tool.load_from_template(version)
+        save_dir= path
+        dataset_tool.set_dataset_path(save_dir)
+        dataset_tool.save(save_dir)
+
+
          
     def run(self, runner="cwltool"):  
 
