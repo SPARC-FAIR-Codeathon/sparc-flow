@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: ["python", "-m", "scriptcwl.examples.add"]
+baseCommand: ["python", "-m", "examples.arithmetic_workflow.tools.multiply"]
 
 inputs:
   x:

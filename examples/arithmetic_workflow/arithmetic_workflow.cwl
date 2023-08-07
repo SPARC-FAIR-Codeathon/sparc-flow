@@ -6,20 +6,20 @@ inputs:
   num2: int
 outputs:
   final_answer:
-    type: int
     outputSource: multiply/answer
+    type: int
 steps:
   add:
-    run: add.cwl
+    run: /home/mfre190/src/2023-team-3/examples/arithmetic_workflow/tools/add.cwl
     in:
-      y: num2
       x: num1
+      y: num2
     out:
     - answer
   multiply:
-    run: multiply.cwl
+    run: /home/mfre190/src/2023-team-3/examples/arithmetic_workflow/tools/multiply.cwl
     in:
-      y: num2
       x: add/answer
+      y: num2
     out:
     - answer
