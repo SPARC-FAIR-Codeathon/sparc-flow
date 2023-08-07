@@ -22,7 +22,7 @@ class Workflow(WorkflowGenerator):
         tools = [tool for tool in os.listdir(tool_path) if tool.endswith(".cwl")] 
         self.tools = [tool.split(".")[0] for tool in tools] 
 
-    def set_input_value(self, input_value, input_name, input_type):  
+    def set_input_value(self, input_value, input_name, input_type):   
         self.input_step = self.add_input(number=str(input_type)) # number is hard coded for now, but needs to be set to input_name
         self.input_value = input_value   
         self.input_name = input_name
@@ -47,3 +47,50 @@ class Workflow(WorkflowGenerator):
                         f'{self.tool_dir}/workflow.cwl', 
                         f'--{self.input_name}', str(self.input_value)]) 
 
+class Tool:
+    def __init__(self):
+        self.command = ""
+        self.arguments = []
+        self.input_type = None
+        self.output_type = None
+        self.output_path = "" 
+        self.tool_dir = None
+
+    def set_command(self, command):
+        self.command = command
+
+    def set_arguments(self, arguments):
+        self.arguments = arguments
+
+    def set_input_type(self, input_type):
+        self.input_type = input_type
+
+    def set_output_type(self, output_type):
+        self.output_type = output_type
+
+    def set_output_path(self, output_path):
+        self.output_path = output_path 
+    
+    def set_tool_dir(self, tool_dir): 
+        self.tool_dir = tool_dir
+
+    def generate_description(self):
+        description = f"""#!/usr/bin/env cwl-runner
+cwlVersion: v1.0
+class: CommandLineTool
+baseCommand: {self.command}
+
+inputs:
+    number:
+        type: {self.input_type}
+        inputBinding:
+        position: 1 
+
+outputs:
+    output_file:
+        type: {self.output_type}
+        outputBinding:
+        glob: {self.output_path}
+                            """ 
+        with open(f'{self.tool_dir}/{self.output_path}.cwl', 'w') as f:
+            f.write(description) 
