@@ -27,7 +27,7 @@
 
 - For MacOS user also should follow Dockstore [guideline](https://dockstore.org/quick-start)
 
-  - But, we should noticed, in official guideline said we should install `Java 11`, this is not correctly! We need download Java 17 or above.
+  - But, we should noticed, We need download Java 17 or above, other lower versions we may meet errors.
   - Also for the MacOS uers, if your terminal is zsh rather than bash, you cannot fully setup guideline Part 2, what you can do is:
 
   ```bash
