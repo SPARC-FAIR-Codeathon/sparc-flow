@@ -1,15 +1,12 @@
-from sparc_me import Dataset_Api
-
+import click
+import json 
+from sparc_me import Dataset_Api 
+import matplotlib.pyplot as plt 
 import numpy as np
-import matplotlib.pyplot as plt
 
-if __name__ == '__main__':
+def get_sparc_dataset_and_process(number):   
     api_tools = Dataset_Api()
-
-    dataset = api_tools.get_dataset_latest_version_pensieve(262)
-
-    # api_tools.download_dataset(dataset["id"])
-
+    dataset = api_tools.get_dataset_latest_version_pensieve(number)  
     sel = 14  # select form parameter tables above which train to plot
     param = (0, sel)
     real_ch_names = ['Cuff 1', 'Cuff 2', 'Cuff 3', 'LIFE 1', 'LIFE 2', 'LIFE 3', 'Micro 1', 'Micro 2',
@@ -215,7 +212,7 @@ if __name__ == '__main__':
                 ]
 
     time = np.array(time)
-    voltages = np.array(voltages)
+    voltages = np.array(voltages) 
 
     fig, ax = plt.subplots(figsize=(15, 5))
     for i in range(len(voltages)):  # add desired channels to plot here
@@ -230,7 +227,15 @@ if __name__ == '__main__':
     plt.ylabel('Voltage (uV)', fontsize=20)
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
-    plt.show()
+    plt.show()  
 
-    # np.savetxt('output.txt', time)  
-    
+    with open("output.txt", 'w') as f:
+        f.write(str(time))
+
+@click.command()
+@click.argument('number', type=int)
+def sparc_data_tool(number):  
+    get_sparc_dataset_and_process(number=number) 
+
+if __name__ == '__main__':
+    sparc_data_tool() 
