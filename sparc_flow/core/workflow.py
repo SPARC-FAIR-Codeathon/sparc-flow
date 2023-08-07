@@ -40,7 +40,6 @@ class Workflow(WorkflowGenerator):
         self.add_outputs(final_answer=tool_output) 
         self.save(f'{self.tool_dir}/workflow.cwl', mode='abs')    
          
-
     def run(self, runner="cwltool"):  
 
          # subprocess.run(['cwltool', 
