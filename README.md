@@ -90,7 +90,7 @@ The sparc-flow API has been designed to be agnostic to the language used to desc
   
 Future developments of sparc-flow include:
 - support for WDL, Nextflow, and Galaxy workflow languages that are used in scientific research platforms.
-- integrating workflow and tool validators.
+- integrating workflow and tool validators and [checkers](https://docs.dockstore.org/en/stable/advanced-topics/checker-workflows.html).
 - integrating workflow and tool descriptions into knowledge graphs such as [SCKAN](https://docs.sparc.science/docs/accessing-the-sparc-connectivity-knowledge-base-of-the-autonomic-nervous-system-sckan) to support the identification of workflow and tools that are related to specific biological concepts. 
 - incorporating approaches for automatically assessing adherence to FAIR-ness guidelines for workflows and tools.
 - tagging workflows using e.g., [Software Ontology (SWO)](https://github.com/allysonlister/swo) descriptions, that will make it easy to identify and search for workflows with e.g. [specific license restrictions](https://github.com/allysonlister/swo/blob/master/LicenceHierarchy.md).
