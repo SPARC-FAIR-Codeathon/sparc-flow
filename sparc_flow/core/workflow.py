@@ -49,12 +49,15 @@ class Workflow(WorkflowGenerator):
 
 class Tool:
     def __init__(self):
+        self.tool_name = None
         self.command = ""
         self.arguments = []
         self.input_type = None
         self.output_type = None
         self.output_path = "" 
         self.tool_dir = None
+    def set_tool_name(self, tool_name): 
+        self.tool_name = tool_name 
 
     def set_command(self, command):
         self.command = command
@@ -84,13 +87,14 @@ inputs:
     number:
         type: {self.input_type}
         inputBinding:
-        position: 1 
+            position: 1 
 
 outputs:
     output_file:
         type: {self.output_type}
         outputBinding:
-        glob: {self.output_path}
-                            """ 
-        with open(f'{self.tool_dir}/{self.output_path}.cwl', 'w') as f:
+            glob: {self.output_path}
+                            """
+        
+        with open(f'{self.tool_dir}/{self.tool_name}.cwl', 'w') as f:
             f.write(description) 
