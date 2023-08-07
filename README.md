@@ -26,7 +26,7 @@ A Python tool to describe and run tools and workflows for processing SPARC datas
 * [Introduction](#introduction)
 * [The problem](#the-problem)
 * [Our solution - sparc-flow](#our-solution---sparc-flow)
-* [Impact](#impact)
+* [Impact and vision](#impact-and-vision)
 * [Setting up sparc-flow](#setting-up-sparc-flow)
 * [Using sparc-flow](#using-sparc-flow)
 * [Reporting issues](#reporting-issues)
@@ -47,7 +47,7 @@ The NIH Common Fund program on **[Stimulating Peripheral Activity to Relieve Con
 
 **The [SPARC Portal](http://sparc.science/) provides a single user-facing online interface to resources** that can be shared, cited, visualized, computed, and used for virtual experimentation. A **key offering** of the portal is the **collection of well-curated datasets in a standardised format, including anatomical and computational models** that are being generated both SPARC-funded researchers and the international scientific community. These datasets can be found under the "[Find Data](https://sparc.science/data?type=dataset)" section of the SPARC Portal. Information regarding [how to navigate a SPARC dataset](https://docs.sparc.science/docs/navigating-a-sparc-dataset) and [how a dataset is formatted](https://docs.sparc.science/docs/overview-of-sparc-dataset-format) can be found on the SPARC Portal.
 
-Workflows can be developed that apply tools (e.g. segmentation of images, or running of computational physiology simulations) in a series of steps to process the original data and generate new results, outcomes, and knowledge. These results (derived data) can be stored in a new standardised dataset and also be [contributed to the SPARC Portal](https://docs.sparc.science/docs/submitting-a-dataset-to-sparc) to support further scientific advances.
+Workflows can be developed that apply tools (e.g. segmentation of images, or running of computational physiology simulations) in a series of steps to process the original data and generate new results, outcomes, and knowledge. These results (derived data) can be stored in a new standardised dataset and potentially be [contributed to the SPARC Portal](https://docs.sparc.science/docs/submitting-a-dataset-to-sparc) to support further scientific advances.
 
 ## The problem
 There is **currently no option for users of SPARC data to**:
@@ -60,8 +60,12 @@ There is **currently no option for users of SPARC data to**:
 To address this problem, we have **developed a Python module called the SPARC Flow (sparc-flow)** that can be used to describe tools and workflows for processing SPARC datasets in accordance with FAIR principles:
 - Provides an easy-to-use python-based application programming interface (API) to enable **tools** and **workflows** to be **described in a language agnostic manner**.
 - Enables the parameters used for running workflows to be stored with the workflow description along with a copy of its associated tools to **facilitate interoperability and the reproducibility of workflow results**.
-- Enables workflows and tools to be independently stored in SDS datasets, ready to be contributed to the SPARC portal to enable reuse by others.
-- Provides the ability to load workflows directly from SDS datasets and run them locally or on existing cloud computing platforms such as [oSPARC](https://osparc.io/), [AnVIL](https://anvilproject.org), [Cavatica](https://www.cavatica.org), [CGC](https://www.cancergenomicscloud.org), [DNAnexus](https://www.dnanexus.com), [Galaxy](https://usegalaxy.org), [Nextflow Tower](https://seqera.io/tower), [Terra](https://terra.bio), etc.
+- Enables **workflows and tools** to be **independently stored in SDS datasets**, **ready to be contributed to the SPARC portal** to enable reuse by others.
+- Provides the ability to **save and load workflows and tools directly from SDS datasets**.
+- Provides the abilty to run workflows:
+  - locally;
+  - on existing cloud computing platforms such as [oSPARC](https://osparc.io/); or
+  - help prepare the workflow to be submitted to Dockstore to enable using its [standardised workflow interfaces](https://docs.dockstore.org/en/stable/advanced-topics/wes/cli-wes-tutorial.html) to run them directly from the commandline or through existing cloud computing platforms from [Dockstore.org](dockstore.org) (currently supports running on [AnVIL](https://anvilproject.org), [Cavatica](https://www.cavatica.org), [CGC](https://www.cancergenomicscloud.org), [DNAnexus](https://www.dnanexus.com), [Galaxy](https://usegalaxy.org), [Nextflow Tower](https://seqera.io/tower), and [Terra](https://terra.bio)).
 - Provides **tutorials** that demonstrate each of the above features.
 - [Collates and proposes guidelines for FAIR-use of tools and workflows](https://docs.google.com/document/d/1PKpl4WZ171C7YlQtG4AQ0WuK1bIFDGD6ys9PCnap_xI/edit)
 - Provides best practices guidance in tutorials on how to use these guidelines.
@@ -73,7 +77,7 @@ The sparc-flow API has been designed to be agnostic to the language used to desc
 - The Common Workflow Language (CWL) - is an open standard and specification used in the field of bioinformatics and scientific computing to describe and execute workflows. CWL provides a way to define and share complex computational tasks and data processing pipelines in a portable and platform-independent manner. It uses a JSON-based format to describe input data, processing steps, and output data, allowing researchers to collaborate and share reproducible analyses across different computing environments. CWL aims to enhance the ease of defining, sharing, and executing computational workflows, particularly in the context of data-intensive scientific research.
 - Dockstore - is an open platform used for sharing, publishing, and discovering bioinformatics tools and workflows. It allows researchers and scientists to easily find, collaborate on, and reproduce analyses involving complex data processing pipelines. Dockstore provides a standardized way to describe and share tools and workflows using CWL and Workflow Description Language (WDL). It facilitates reproducibility in bioinformatics research by enabling users to access and execute these tools and workflows in various computational environments, such as cloud platforms, containers (e.g. Docker), or local clusters. Dockstore is Supported by [58 organisations](https://dockstore.org/organizations) including the [Global Alliance for Genomics and Health (GA4GH)](https://ga4gh.org/), the [Broad Institute](https://www.broadinstitute.org), the [Human Cell Atlas](https://humancellatlas.org/), the [Human BioMolecular Atlas Program (HuBMAP)](https://commonfund.nih.gov/hubmap), [NIH Cloud Platform Interoperability Effort](https://anvilproject.org/ncpi), the [Imaging Data Commons](https://imaging.datacommons.cancer.gov/), and [Biosimulators](https://biosimulators.org/).
 
-### FAIRness
+### Enabling FAIRness
 **sparc-flow can help enhance the FAIRness of tools and workflows that process SPARC data** by enabling:
 - **F***indability*
   - Facilitate storing of workflows and tools in SDS Datasets in the SPARC Portal or on Dockstore, which can be assigned unique Digital Object Identifiers (DOI).
@@ -81,7 +85,7 @@ The sparc-flow API has been designed to be agnostic to the language used to desc
 - **I***nteroperability*
 - **R***eusability*
 
-## Impact & Vision
+## Impact and vision
 - automated assembly of workflows (e.g. for creating digital tiwns for medical applications)
   
 Future developments of sparc-flow include:
