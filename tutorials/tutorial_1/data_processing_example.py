@@ -22,6 +22,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from sparc_me import Dataset_Api
+from sparc_me import Dataset
+from sparc_me.core.utils import add_data
 
 if __name__ == '__main__':
 
@@ -31,11 +34,26 @@ if __name__ == '__main__':
     real_ch_names = ['Cuff 1', 'Cuff 2', 'Cuff 3', 'LIFE 1', 'LIFE 2', 'LIFE 3', 'Micro 1', 'Micro 2',
                      'Micro 3']  # for vagus
     subsample = 20
-    if save_data:
+    
+    
+    # Get dataset metadata from SPARC Portal
+    api_tools = Dataset_Api()
+    datasetId = 262
+    versionId = 1
+    metadata = api_tools.get_metadata_pensieve(datasetId, versionId)
+    
+    # Note we can download the dataset from SPARC using the sparc-me API using the line below
+    # api_tools.download_dataset(dataset["id"])
+    
+    # This is commented out as the dataset is >29.63 GB, we downloaded the target subject
+    # data directly from the SPARC portal, processed the data and saved the outputs.
+    
+    # The save data case will access the data downloaded from SPARC 
+    if save_data: 
         import pyeCAP as pyCAP
 
-        # directory = r'../dataset/files/primary/sub-1/perf-sub-1-vagus-ecap/' #insert location of folder
-        directory = r'C:\\Users\\clin864\\Downloads\\files\\primary\\sub-1\\perf-sub-1-vagus-ecap'
+        directory = r'../../dataset/files/primary/sub-1/perf-sub-1-vagus-ecap/' #insert location of folder
+        # directory = r'C:\\Users\\clin864\\Downloads\\files\\primary\\sub-1\\perf-sub-1-vagus-ecap'
 
         data = pyCAP.Ephys(directory, stores=['maco','mico']) #importing ephys data from TDT files
         data = data.remove_ch((6,7,11)) #removing unused recording channels
@@ -62,8 +80,9 @@ if __name__ == '__main__':
         # ## Saving the filtered data
         time_processed = ecap_filt.time(param)[::subsample] * 1e3
         value_processed = ecap_filt.median(param)[i, ::subsample] * 1e6
-        # pd.DataFrame({'Time': time_processed, 'Values': value_processed}).to_csv(r'../dataset/outputs/Processed.csv')
         pd.DataFrame({'Time': time_processed, 'Values': value_processed}).to_csv(r'Processed.csv')
+    
+        
     else:
         fig, ax = plt.subplots(figsize=(15,5))
         time = np.loadtxt('time.txt')
@@ -71,6 +90,7 @@ if __name__ == '__main__':
             voltage = np.loadtxt('voltage_{}.txt'.format(i))
             plt.plot(time*1e3, voltage*1e6, label = str(real_ch_names[i]))
 
+        # Visualising the data
         plt.xlabel('Time (ms)')
         plt.ylabel('Voltage (\u03BCV)')
         plt.xlim([1,9]) #1-9 for Abeta, 1-19 for B
