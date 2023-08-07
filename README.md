@@ -66,10 +66,12 @@ To address this problem, we have **developed a Python module called the SPARC Fl
 - [Collates and proposes guidelines for FAIR-use of tools and workflows](https://docs.google.com/document/d/1PKpl4WZ171C7YlQtG4AQ0WuK1bIFDGD6ys9PCnap_xI/edit)
 - Provides best practices guidance in tutorials on how to use these guidelines.
 
+### Design
 The sparc-flow API has been designed to be agnostic to the language used to describe tools & workflows and the services it adopts to run the workflows. The following languages and services are currently supported:
 - The Common Workflow Language (CWL) - is an open standard and specification used in the field of bioinformatics and scientific computing to describe and execute workflows. CWL provides a way to define and share complex computational tasks and data processing pipelines in a portable and platform-independent manner. It uses a JSON-based format to describe input data, processing steps, and output data, allowing researchers to collaborate and share reproducible analyses across different computing environments. CWL aims to enhance the ease of defining, sharing, and executing computational workflows, particularly in the context of data-intensive scientific research.
 - Dockstore - is an open platform used for sharing, publishing, and discovering bioinformatics tools and workflows. It allows researchers and scientists to easily find, collaborate on, and reproduce analyses involving complex data processing pipelines. Dockstore provides a standardized way to describe and share tools and workflows using CWL and Workflow Description Language (WDL). It facilitates reproducibility in bioinformatics research by enabling users to access and execute these tools and workflows in various computational environments, such as cloud platforms, containers (e.g. Docker), or local clusters. Dockstore is Supported by [58 organisations](https://dockstore.org/organizations) including the [Global Alliance for Genomics and Health (GA4GH)](https://ga4gh.org/), the [Broad Institute](https://www.broadinstitute.org), the [Human Cell Atlas](https://humancellatlas.org/), the [Human BioMolecular Atlas Program (HuBMAP)](https://commonfund.nih.gov/hubmap), [NIH Cloud Platform Interoperability Effort](https://anvilproject.org/ncpi), the [Imaging Data Commons](https://imaging.datacommons.cancer.gov/), and [Biosimulators](https://biosimulators.org/).
 
+### FAIRness
 **sparc-flow can help enhance the FAIRness of tools and workflows that process SPARC data** by enabling:
 - **F***indability*
   - Facilitate storing of workflows and tools in SDS Datasets in the SPARC Portal or on Dockstore, which can be assigned unique Digital Object Identifiers (DOI).
@@ -77,16 +79,15 @@ The sparc-flow API has been designed to be agnostic to the language used to desc
 - **I***nteroperability*
 - **R***eusability*
 
-executors supporting multiple backends, leading to GA4GH standards (like TES and WES- minimal APIs describing how a user submits a tool/workflow to an execution engine in a standardized way)
-
 ## Impact & Vision
+- automated assembly of workflows (e.g. for creating digital tiwns for medical applications)
+  
 Future developments of sparc-flow include:
-- support for WDL Nextflow, and Galaxy workflow languages that are used in scientific research platforms.
+- support for WDL, Nextflow, and Galaxy workflow languages that are used in scientific research platforms.
 - integrating workflow and tool validators.
 - integrating workflow and tool descriptions into knowledge graphs such as [SCKAN](https://docs.sparc.science/docs/accessing-the-sparc-connectivity-knowledge-base-of-the-autonomic-nervous-system-sckan) to support the identification of workflow and tools that are related to specific biological concepts. 
 - incorporating approaches for automatically assessing adherence to FAIR-ness guidelines for workflows and tools.
 - tagging workflows using e.g., [Software Ontology (SWO)](https://github.com/allysonlister/swo) descriptions, that will make it easy to identify and search for workflows with e.g. [specific license restrictions](https://github.com/allysonlister/swo/blob/master/LicenceHierarchy.md).
-- to enable the automated assembly of computational physiology models of digital twins.
 
 ## Setting up sparc-flow
 
