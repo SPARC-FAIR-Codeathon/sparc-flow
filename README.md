@@ -51,30 +51,29 @@ Workflows can be developed that apply tools (e.g. segmentation of images, or run
 
 ## The problem
 There is **currently no option for**:
-- **enabling users to easily describe and run workflows that use SPARC data locally or in cloud computing platforms**
+- **enabling users to easily describe workflows and tools in fair manner and run workflows that use SPARC data locally or in cloud computing platforms**
 - **ensuring reproducibility of workflow results**
 - **enabling reuse of tools developed for processing SPARC data to create new workflows** (tools are currently bundled within and tailored to specific SPARC datasets)
 
-This limits the ability of members of the SPARC and the wider scientific community to apply FAIR principles for:
+This limits the ability of members of the SPARC and the wider scientific communities  to apply FAIR principles for:
 
 ## Our solution - sparc-flow
 To address this problem, we have **developed a Python module called the SPARC Flow (sparc-flow)** that can be used to describe tools and workflows for processing SPARC datasets in accordance with FAIR principles by:
+- Providing an easy-to-use python-based application programming interface (API) to enable **tools** and **workflows** to be **described in a language agnostic manner**[^1] 
+- Enabling the parameters used for running workflows to be stored with the workflow description and a copy of it's associated tools to **facilitate interoperability and the reproducibility of workflow results**.
+- Enabling workflows and tools to be independently stored in SDS datasets, ready to be contributed to the SPARC portal to enable reuse by others.
+- Providing the ability to load workflows directly from SDS datasets and run them locally or on exisiting cloud computing platforms including oSPARC.
+- Providing **tutorials** that demonstrate each of the above features.
+- [Proposing guidelines for FAIR-use of tools and workflows](https://docs.google.com/document/d/1PKpl4WZ171C7YlQtG4AQ0WuK1bIFDGD6ys9PCnap_xI/edit) and providing best practices guidance in tutorials on how to use these guidelines.
 
-- Enabling tools to be stored in 
-sparc-flow provides:
+[^1]: While the sparc-flow API has been designed to be agnostic to the language used to describe tools and workflows, only support for the Common Workflow Language has been implemented during this 2.5 day codeathon.
 
-API to easily create workflows using standard language e.g. CWL format and store them in SDS format
-API to create tool (workflow step) descriptions and store them in SDS format
-Tutorials on how to run the workflows locally, on seven bridges, o2sparc
-Best practices to make workflows and tools FAIR
 
 executors supporting multiple backends, leading to GA4GH standards (like TES and WES- minimal APIs describing how a user submits a tool/workflow to an execution engine in a standardized way)
 
 Supported by [58 organisations](https://dockstore.org/organizations) including: 
 
 Workflow language agnostic implementation (support for WDL, Nextflow etc will be included in the future)
-
-Examples and guided tutorials have been created to demonstrate each of the features above. 
 
 Dockstore enable the creation of reproducible workflows and tools
 
@@ -86,7 +85,8 @@ Programmatically creating workflows
 
 Future developments can include:
 - Providing a mechanism to
-- 
+- Integrate workflows knowlege graphs to visualise workflows
+- Incoporate tools in sparc-flow to automatically assess adherence to FAIR-ness guidelines for workflows and tools.
 
 
 ## Setting up sparc-flow
@@ -152,13 +152,13 @@ Guided tutorials have been developed describing how to use sparc-flow in differe
     <td><a href="https://github.com/SPARC-FAIR-Codeathon/sparc-flow/blob/main/tutorials/tutorial_1_download_data_and_postprocess.ipynb">
     1
     </a></td>
-    <td> Creating a workflow (using a simple python script) that downloads an existing curated SDS dataset from the SPARC portal (<a href="https://doi.org/10.26275/vm1h-k4kq">Electrode design characterization for electrophysiology from swine peripheral nervous system</a>) using sparc-me and perform post-processing to generate a new derived SDS dataset.</td>
+    <td> Provides a typical data processsing example that downloads an existing curated SDS dataset from the SPARC portal (<a href="https://doi.org/10.26275/vm1h-k4kq">Electrode design characterization for electrophysiology from swine peripheral nervous system</a>) using sparc-me and perform post-processing to generate a new derived SDS dataset. This example will be used in subsequent tutorials</td>
   </tr>
   <tr>
     <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/main/examples/tutorial_2_creating_standarised_workflow_description.ipynb">
     2
     </a></td>
-    <td> Use sparc-flow to programmatically create the workflow described in Tutorial 1 in a standard workflow language (CWL). This tutorial incorporates best practice guidelines to ensure workflows are FAIR.
+    <td> Use sparc-flow to programmatically describe the example in Tutorial 1 in a standard workflow language (Common Workflow Language). This tutorial incorporates best [practice guidelines](https://docs.google.com/document/d/1PKpl4WZ171C7YlQtG4AQ0WuK1bIFDGD6ys9PCnap_xI/edit) to ensure tools used in the workflow and the workflow itself are FAIR.
     </td>
   </tr>
   <tr>
@@ -207,8 +207,8 @@ Fork this repository and submit a pull request to contribute. Before doing so, p
 
 ### Project structure
 * `/sparc_flow/` - Parent directory of sparc-flow python module.
-* `/resources/` - Resources for testing sparc_flow.
 * `/sparc_flow/core/` - Core classes of sparc-flow.
+* `/resources/` - Resources for testing sparc-flow. 
 * `/examples/` - Parent directory of sparc-flow examples and tutorials.
 * `/examples/test_data/` - Test data used for sparc-flow examples and tutorials.
 * `/docs/images/` - Images used in sparc-flow tutorials.
