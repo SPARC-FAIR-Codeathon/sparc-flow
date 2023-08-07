@@ -40,12 +40,26 @@ class Workflow(WorkflowGenerator):
         self.add_outputs(final_answer=tool_output) 
         self.save(f'{self.tool_dir}/workflow.cwl', mode='abs')    
          
-    
-    def run(self):        
+    def run(self, runner="cwltool"):  
 
-        subprocess.run(['cwltool', 
+         # subprocess.run(['cwltool', 
+        #                 f'{self.tool_dir}/workflow.cwl', 
+        #                 f'--{self.input_name}', str(self.input_value)]) 
+     
+        if(runner == "dockstore"):
+            subprocess.run(['dockstore', 
+                            'workflow', 
+                            'launch',
+                            '--local-entry'
                         f'{self.tool_dir}/workflow.cwl', 
-                        f'--{self.input_name}', str(self.input_value)]) 
+                            '--json',
+                        f'{self.tool_dir}/inp_job.json']) 
+        else:
+            subprocess.run(['cwltool', 
+                            f'{self.tool_dir}/workflow.cwl', 
+                            f'{self.tool_dir}/inp_job.json']) 
+    
+
 
 class Tool:
     def __init__(self):
