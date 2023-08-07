@@ -41,7 +41,7 @@ class Workflow(WorkflowGenerator):
         self.save(f'{self.tool_dir}/workflow.cwl', mode='abs')    
          
     
-    def run(self):       
+    def run(self):        
 
         subprocess.run(['cwltool', 
                         f'{self.tool_dir}/workflow.cwl', 
