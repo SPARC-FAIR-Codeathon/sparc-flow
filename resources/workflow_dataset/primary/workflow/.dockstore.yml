@@ -1,9 +1,9 @@
-version: 1.2
+version: '1.2'
 workflows:
-  - subclass: CWL
-    primaryDescriptorPath: /Dockstore.cwl
-    testParameterFiles:
-      - /inp_job.yml
-    authors:
-      - name: Linkun Gao
-        email: gaolinkun123@gmail.com
+- authors:
+  - email: ''
+    name: hsgshn@gmail.com
+  primaryDescriptorPath: /workflow.cwl
+  subclass: Linkun Gao
+  testParameterFiles:
+  - /inp_job.yml
