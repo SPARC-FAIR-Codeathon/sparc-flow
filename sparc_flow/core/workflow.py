@@ -83,6 +83,47 @@ class Workflow(WorkflowGenerator):
         dataset_tool.save(save_dir)
         shutil.copytree(source, f'{path}/primary/workflow')
 
+    def load_workflow(self,path):
+        contents = os.listdir(path)
+
+        cwl_files = [file for file in contents if file.endswith(".cwl")]
+
+        if len(cwl_files) > 0:
+            self.workflow_dir = path;
+            self.tool_dir = f'{path}/tools' 
+            return {
+                 "workflow_path": self.workflow_dir + "/",
+                "params_path": self.tool_dir + '/'
+            }
+        else:
+            return {
+                "workflow_path": "",
+                "params_path": ""
+            }
+    def generate_dockstore_github_requirements(self, workflow_path,  output_path, paras_path_arr=[],language="CWL", name="", email=""):
+        # Define the YAML content as a Python dictionary
+        yaml_content = {
+            "version": "1.2",
+            "workflows": [
+                {
+                    "subclass": language,
+                    "primaryDescriptorPath": workflow_path,
+                    "testParameterFiles": paras_path_arr,
+                    "authors": [
+                        {
+                            "name": name,
+                            "email": email
+                        }
+                    ]
+                }
+            ]
+        }
+        # Define the file path where you want to save the YAML content
+        file_path = output_path + ".dockstore.yml"
+
+        # Write the YAML content to the file
+        with open(file_path, 'w') as file:
+            yaml.dump(yaml_content, file)
          
     def run(self, runner="cwltool"):  
 
@@ -95,7 +136,7 @@ class Workflow(WorkflowGenerator):
                 subprocess.run(['dockstore', 
                                 'workflow', 
                                 'launch',
-                                '--local-entry'
+                                '--local-entry',
                             f'{self.workflow_dir}/workflow.cwl', 
                                 '--json',
                             f'{self.workflow_dir}/inp_job.json']) 
