@@ -17,4 +17,4 @@ workflow.run()
 
 workflow.run(runner="dockstore")
 
-workflow.generate_dockstore_github_requirements("/workflow.cwl", res["workflow_path"], ["/inp_job.yml"],"Linkun Gao", "hsgshn@gmail.com")
+workflow.generate_dockstore_github_requirements("/workflow.cwl", res["workflow_path"], ["/inp_job.yml"],"Your name", "hsgshn@gmail.com")
