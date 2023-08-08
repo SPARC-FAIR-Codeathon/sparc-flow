@@ -76,19 +76,24 @@ class Workflow(WorkflowGenerator):
          # subprocess.run(['cwltool', 
         #                 f'{self.tool_dir}/workflow.cwl', 
         #                 f'--{self.input_name}', str(self.input_value)]) 
-     
-        if(runner == "dockstore"):
-            subprocess.run(['dockstore', 
-                            'workflow', 
-                            'launch',
-                            '--local-entry'
-                        f'{self.workflow_dir}/workflow.cwl', 
-                            '--json',
-                        f'{self.tool_dir}/inp_job.json']) 
-        else:
-            subprocess.run(['cwltool', 
+        try: 
+            if(runner == "dockstore"):
+                subprocess.run(['dockstore', 
+                                'workflow', 
+                                'launch',
+                                '--local-entry'
                             f'{self.workflow_dir}/workflow.cwl', 
+                                '--json',
                             f'{self.tool_dir}/inp_job.json']) 
+            else:
+                subprocess.run(['cwltool', 
+                                f'{self.workflow_dir}/workflow.cwl', 
+                                f'{self.tool_dir}/inp_job.json'])  
+        except: 
+             
+            subprocess.run(['cwltool', 
+                            f'{self.tool_dir}/sparc_data_tool.cwl',  
+                            f'{self.tool_dir}/inp_job.json'])
 
 class Tool:  
         # create docstring below with methods, parameters and return values 
