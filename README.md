@@ -54,16 +54,16 @@ The NIH Common Fund program on **[Stimulating Peripheral Activity to Relieve Con
 There is **currently no option for users to**:
 - **easily describe workflows and tools, which process SPARC data, in a FAIR manner**
 - **easily run such workflows locally or from cloud computing platforms such as oSPARC**
-- **ensure reproducibility of workflow results**
-- **easily reuse tools developed for processing SPARC data in new workflows** (tools are currently bundled within and tailored to specific SPARC datasets).
+- **easily reproduce workflow results**
+- **reuse tools developed for processing SPARC data in new workflows** (tools are currently bundled within and tailored to specific SPARC datasets).
 
 ## Our solution - sparc-flow
 To address this problem, we have **developed a Python module called the SPARC Flow (sparc-flow)** that can be used to describe tools and workflows for processing SPARC datasets in accordance with FAIR principles:
 - Provides an easy-to-use python-based application programming interface (API) to enable **tools** and **workflows** to be **described in a language agnostic manner**.
-- Enables the parameters used for running workflows to be stored with the workflow description along with a copy of its associated tools to **facilitate interoperability and the reproducibility of workflow results**.
-- Enables **workflows and tools** to be **independently stored in SDS datasets**, **ready to be contributed to the SPARC portal** to enable reuse by others.
-- Provides the to **save and load workflows and tools directly from/to SDS datasets** using [sparc-me](https://github.com/SPARC-FAIR-Codeathon/sparc-me).
-- Provides the abilty to **run workflows**:
+- Enables the parameters used for running workflows to be stored with the standardised workflow description along with a copy of its associated tools to **enable workflow results to be easily reproduced**.
+- Enables **workflows and tool descriptions** to be **independently stored in SDS datasets**, **ready to be contributed to the SPARC portal** to enable reuse by others.
+- Provides the ability to **save and load workflows and tools directly from/to SDS datasets** via [sparc-me](https://github.com/SPARC-FAIR-Codeathon/sparc-me).
+- Provides the ability to **run workflows**:
   - locally;
   - on existing cloud computing platforms such as [oSPARC](https://osparc.io/); or
   - help prepare the workflow to be submitted to Dockstore to enable using its [standardised workflow interfaces](https://docs.dockstore.org/en/stable/advanced-topics/wes/cli-wes-tutorial.html) to run them directly from the commandline or through existing cloud computing platforms from [Dockstore.org](dockstore.org) (currently supports running on [AnVIL](https://anvilproject.org), [Cavatica](https://www.cavatica.org), [CGC](https://www.cancergenomicscloud.org), [DNAnexus](https://www.dnanexus.com), [Galaxy](https://usegalaxy.org), [Nextflow Tower](https://seqera.io/tower), and [Terra](https://terra.bio)).
@@ -162,38 +162,38 @@ Guided Jupyter Notebook tutorials have been developed describing how to use spar
 </thead>
 <tbody>
   <tr>
-    <td><a href="https://github.com/SPARC-FAIR-Codeathon/sparc-flow/blob/main/tutorials/tutorial_1_download_data_and_postprocess.ipynb">
+    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/master/tutorials/tutorial_1/tutorial_1_download_data_and_postprocess.ipynb">
     1
     </a></td>
     <td> Provides a typical data processing example that downloads an existing curated SDS dataset from the SPARC portal (<a href="https://doi.org/10.26275/vm1h-k4kq">Electrode design characterization for electrophysiology from swine peripheral nervous system</a>) using <a href="https://github.com/SPARC-FAIR-Codeathon/sparc-me">sparc-me</a> and perform post-processing to generate a new derived SDS dataset. This example will be used in subsequent tutorials</td>
   </tr>
   <tr>
-    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/main/examples/tutorial_2_creating_standarised_workflow_description.ipynb">
+    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/master/tutorials/tutorial_2/tutorial_2_creating_standarised_workflow_description.ipynb">
     2
     </a></td>
     <td> Use sparc-flow to programmatically describe the example in Tutorial 1 in a standard workflow language (Common Workflow Language). This tutorial incorporates <a href="https://docs.google.com/document/d/1PKpl4WZ171C7YlQtG4AQ0WuK1bIFDGD6ys9PCnap_xI/edit">best practice guidelines</a> to ensure tools used in the workflow and the workflow itself are FAIR.
     </td>
   </tr>
   <tr>
-    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/main/examples/tutorial_3_running_locally_with_cwltool.ipynb">
+    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/master/tutorials/tutorial_3/tutorial_3_running_locally_with_cwltool.ipynb">
     3
     </a></td>
     <td> Use sparc-flow to run the standardised workflow described in Tutorial 2 locally using cwltool (reference implementation provided by the CWL Organisation).</td>
   </tr>
   <tr>
-    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/main/examples/tutorial_4_running_locally_with_docstore.ipynb">
+    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/master/tutorials/tutorial_4/tutorial_4_running_locally_with_docstore.ipynb">
     4
     </a></td>
     <td> Use sparc-flow to run the standardised workflow described in Tutorial 2 locally using Dockstore.</td>
   </tr> 
   <tr>
-    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/main/examples/tutorial_5_running_on_dockstore_compatiable_cloud.ipynb">
+    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/master/tutorials/tutorial_5/tutorial_5_running_on_dockstore_compatiable_cloud.ipynb">
     5
     </a></td>
     <td> Use sparc-flow to run the standardised workflow described in Tutorial 2 via the cloud using a Dockstore-compatible cloud computing platform (e.g.  AnVIL, Cavatica, CGC, DNAnexus, Galaxy, Nextflow Tower, and Terra).</td>
   </tr>
   <tr>
-    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/main/examples/tutorial_6_running_on_oSPARC.ipynb">
+    <td><a href="https://github.com/SPARC-FAIR-Codeathon/2023-team-3/blob/master/tutorials/tutorial_6/tutorial_6_osparc.ipynb">
     6
     </a></td>
     <td> Use sparc-flow to run the standardised workflow described in Tutorial 2 on oSPARC.</td>
