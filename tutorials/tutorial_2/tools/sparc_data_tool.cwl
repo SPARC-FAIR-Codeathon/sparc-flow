@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: ['python', '-m', 'examples.sparc_workflow_example.tools.sparc_data_tool']
+baseCommand: ['python', '-m', 'tools.sparc_data_tool']
 
 inputs:
     number:

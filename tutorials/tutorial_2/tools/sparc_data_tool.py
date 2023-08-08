@@ -227,7 +227,9 @@ def get_sparc_dataset_and_process(number):
     plt.ylabel('Voltage (uV)', fontsize=20)
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
-    plt.show()  
+    plt.show()   
+
+    fig.savefig("output.png")
     
     with open("output.txt", 'w') as f:
         f.write(str(time))  
