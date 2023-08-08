@@ -1,6 +1,7 @@
 from scriptcwl import WorkflowGenerator
 from sparc_me import Dataset
 import subprocess
+import shutil
 import os
 
 class Workflow(WorkflowGenerator):     
@@ -74,6 +75,7 @@ class Workflow(WorkflowGenerator):
         save_dir= path
         dataset_tool.set_dataset_path(save_dir)
         dataset_tool.save(save_dir)
+
 
          
     def run(self, runner="cwltool"):  
