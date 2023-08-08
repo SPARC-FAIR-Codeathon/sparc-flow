@@ -90,10 +90,9 @@ class Workflow(WorkflowGenerator):
                                 f'{self.workflow_dir}/workflow.cwl', 
                                 f'{self.tool_dir}/inp_job.json'])  
         except: 
-             
             subprocess.run(['python', 
                             f'{self.tool_dir}/sparc_data_tool.py',  
-                            f'{self.tool_dir}/inp_job.json'])
+                            262])
 
 class Tool:  
         # create docstring below with methods, parameters and return values 
