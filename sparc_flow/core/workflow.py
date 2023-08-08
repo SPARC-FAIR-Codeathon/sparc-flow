@@ -1,5 +1,6 @@
 from scriptcwl import WorkflowGenerator
-import subprocess
+import subprocess 
+import json
 import os
 
 class Workflow(WorkflowGenerator):     
@@ -89,10 +90,12 @@ class Workflow(WorkflowGenerator):
                 subprocess.run(['cwltool', 
                                 f'{self.workflow_dir}/workflow.cwl', 
                                 f'{self.tool_dir}/inp_job.json'])  
-        except: 
+        except:  
+            inp = open(f'{self.tool_dir}/inp_job.json') 
+            inp = json.load(inp) 
             subprocess.run(['python', 
                             f'{self.tool_dir}/sparc_data_tool.py',  
-                            262])
+                            inp["number"]])
 
 class Tool:  
         # create docstring below with methods, parameters and return values 
