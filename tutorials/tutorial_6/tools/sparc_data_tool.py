@@ -214,7 +214,7 @@ def get_sparc_dataset_and_process(number):
     time = np.array(time)
     voltages = np.array(voltages) 
 
-    fig, ax = plt.subplots(figsize=(15, 5))
+    fig, ax = plt.subplots(figsize=(10, 6))
     for i in range(len(voltages)):  # add desired channels to plot here
         plt.plot(time * 1e3, voltages[i] * 1e6, label=str(real_ch_names[i]))
 
@@ -227,7 +227,9 @@ def get_sparc_dataset_and_process(number):
     plt.ylabel('Voltage (uV)', fontsize=20)
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20)
-    plt.show()  
+    plt.show()
+
+    fig.savefig('results.png')
     
     with open("output.txt", 'w') as f:
         f.write(str(time))  
