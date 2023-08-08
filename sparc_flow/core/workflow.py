@@ -91,8 +91,8 @@ class Workflow(WorkflowGenerator):
                                 f'{self.tool_dir}/inp_job.json'])  
         except: 
              
-            subprocess.run(['cwltool', 
-                            f'{self.tool_dir}/sparc_data_tool.cwl',  
+            subprocess.run(['python', 
+                            f'{self.tool_dir}/sparc_data_tool.py',  
                             f'{self.tool_dir}/inp_job.json'])
 
 class Tool:  
