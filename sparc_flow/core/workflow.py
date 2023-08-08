@@ -72,15 +72,16 @@ class Workflow(WorkflowGenerator):
 
         self.add_outputs(final_answer=tool_output) 
 
-        self.save(f'{self.tool_dir}/workflow.cwl', mode='abs')    
+        self.save(f'{self.workflow_dir}/workflow.cwl', mode='abs')    
 
-    def create_sds(self, path):
+    def create_sds(self, path, source):
         dataset_tool = Dataset()
         version = "2.0.0"
         dataset_tool.load_from_template(version)
         save_dir= path
         dataset_tool.set_dataset_path(save_dir)
         dataset_tool.save(save_dir)
+        shutil.copytree(source, f'{path}/primary/workflow')
 
          
     def run(self, runner="cwltool"):  
@@ -96,11 +97,11 @@ class Workflow(WorkflowGenerator):
                             '--local-entry'
                         f'{self.workflow_dir}/workflow.cwl', 
                             '--json',
-                        f'{self.tool_dir}/inp_job.json']) 
+                        f'{self.workflow_dir}/inp_job.json']) 
         else:
             subprocess.run(['cwltool', 
                             f'{self.workflow_dir}/workflow.cwl', 
-                            f'{self.tool_dir}/inp_job.json']) 
+                            f'{self.workflow_dir}/inp_job.json']) 
 
 class Tool:  
         # create docstring below with methods, parameters and return values 
@@ -218,3 +219,13 @@ outputs:
         
         with open(f'{self.tool_dir}/{self.tool_name}.cwl', 'w') as f:
             f.write(description) 
+
+
+    def create_sds(self, path, source):
+        dataset_tool = Dataset()
+        version = "2.0.0"
+        dataset_tool.load_from_template(version)
+        save_dir= path
+        dataset_tool.set_dataset_path(save_dir)
+        dataset_tool.save(save_dir)
+        shutil.copytree(source, f'{path}/primary/tools')
