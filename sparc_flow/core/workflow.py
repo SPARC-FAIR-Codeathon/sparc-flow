@@ -1,5 +1,8 @@
 from scriptcwl import WorkflowGenerator
-import subprocess 
+from sparc_me import Dataset
+import yaml
+import subprocess
+import shutil
 import json
 import os
 
@@ -70,14 +73,85 @@ class Workflow(WorkflowGenerator):
                                                                 # an attempt is made above, but it doesn't work currently.
 
         self.add_outputs(final_answer=tool_output) 
+
         self.save(f'{self.workflow_dir}/workflow.cwl', mode='abs')    
+
+    def create_sds(self, path, source):
+        dataset_tool = Dataset()
+        version = "2.0.0"
+        dataset_tool.load_from_template(version)
+        save_dir= path
+        dataset_tool.set_dataset_path(save_dir)
+        dataset_tool.save(save_dir)
+        shutil.copytree(source, f'{path}/primary/workflow')
+
+    def load_workflow(self,path):
+        contents = os.listdir(path)
+
+        cwl_files = [file for file in contents if file.endswith(".cwl")]
+
+        if len(cwl_files) > 0:
+            self.workflow_dir = path;
+            self.tool_dir = f'{path}/tools' 
+            return {
+                 "workflow_path": self.workflow_dir + "/",
+                "params_path": self.tool_dir + '/'
+            }
+        else:
+            return {
+                "workflow_path": "",
+                "params_path": ""
+            }
+    def generate_dockstore_github_requirements(self, workflow_path,  output_path, paras_path_arr=[],language="CWL", name="", email=""):
+        # Define the YAML content as a Python dictionary
+        yaml_content = {
+            "version": "1.2",
+            "workflows": [
+                {
+                    "subclass": language,
+                    "primaryDescriptorPath": workflow_path,
+                    "testParameterFiles": paras_path_arr,
+                    "authors": [
+                        {
+                            "name": name,
+                            "email": email
+                        }
+                    ]
+                }
+            ]
+        }
+        # Define the file path where you want to save the YAML content
+        file_path = output_path + ".dockstore.yml"
+
+        # Write the YAML content to the file
+        with open(file_path, 'w') as file:
+            yaml.dump(yaml_content, file)
          
     def run(self, runner="cwltool"):  
 
          # subprocess.run(['cwltool', 
         #                 f'{self.tool_dir}/workflow.cwl', 
         #                 f'--{self.input_name}', str(self.input_value)]) 
-      
+
+        # try: 
+        #     if(runner == "dockstore"):
+        #         subprocess.run(['dockstore', 
+        #                         'workflow', 
+        #                         'launch',
+        #                         '--local-entry',
+        #                     f'{self.workflow_dir}/workflow.cwl', 
+        #                         '--json',
+        #                     f'{self.workflow_dir}/inp_job.json']) 
+        #     else:
+        #         subprocess.run(['cwltool', 
+        #                         f'{self.workflow_dir}/workflow.cwl', 
+        #                         f'{self.workflow_dir}/inp_job.json'])  
+        # except: 
+             
+        #     subprocess.run(['python', 
+        #                     f'{self.tool_dir}/sparc_data_tool.py',  
+        #                     f'{self.workflow_dir}/inp_job.json'])
+
         if(runner == "dockstore"):
             subprocess.run(['dockstore', 
                             'workflow', 
@@ -90,6 +164,7 @@ class Workflow(WorkflowGenerator):
             subprocess.run(['python', 
                         f'{self.tool_dir}/sparc_data_tool.py',  
                         "262"])
+
 
 class Tool:  
         # create docstring below with methods, parameters and return values 
@@ -207,3 +282,13 @@ outputs:
         
         with open(f'{self.tool_dir}/{self.tool_name}.cwl', 'w') as f:
             f.write(description) 
+
+
+    def create_sds(self, path, source):
+        dataset_tool = Dataset()
+        version = "2.0.0"
+        dataset_tool.load_from_template(version)
+        save_dir= path
+        dataset_tool.set_dataset_path(save_dir)
+        dataset_tool.save(save_dir)
+        shutil.copytree(source, f'{path}/primary/tools')
