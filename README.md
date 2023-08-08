@@ -54,16 +54,16 @@ The NIH Common Fund program on **[Stimulating Peripheral Activity to Relieve Con
 There is **currently no option for users to**:
 - **easily describe workflows and tools, which process SPARC data, in a FAIR manner**
 - **easily run such workflows locally or from cloud computing platforms such as oSPARC**
-- **ensure reproducibility of workflow results**
-- **easily reuse tools developed for processing SPARC data in new workflows** (tools are currently bundled within and tailored to specific SPARC datasets).
+- **easily reproduce workflow results**
+- **reuse tools developed for processing SPARC data in new workflows** (tools are currently bundled within and tailored to specific SPARC datasets).
 
 ## Our solution - sparc-flow
 To address this problem, we have **developed a Python module called the SPARC Flow (sparc-flow)** that can be used to describe tools and workflows for processing SPARC datasets in accordance with FAIR principles:
 - Provides an easy-to-use python-based application programming interface (API) to enable **tools** and **workflows** to be **described in a language agnostic manner**.
-- Enables the parameters used for running workflows to be stored with the workflow description along with a copy of its associated tools to **facilitate interoperability and the reproducibility of workflow results**.
-- Enables **workflows and tools** to be **independently stored in SDS datasets**, **ready to be contributed to the SPARC portal** to enable reuse by others.
-- Provides the to **save and load workflows and tools directly from/to SDS datasets** using [sparc-me](https://github.com/SPARC-FAIR-Codeathon/sparc-me).
-- Provides the abilty to **run workflows**:
+- Enables the parameters used for running workflows to be stored with the standardised workflow description along with a copy of its associated tools to **enable workflow results to be easily reproduced**.
+- Enables **workflows and tool descriptions** to be **independently stored in SDS datasets**, **ready to be contributed to the SPARC portal** to enable reuse by others.
+- Provides the ability to **save and load workflows and tools directly from/to SDS datasets** via [sparc-me](https://github.com/SPARC-FAIR-Codeathon/sparc-me).
+- Provides the ability to **run workflows**:
   - locally;
   - on existing cloud computing platforms such as [oSPARC](https://osparc.io/); or
   - help prepare the workflow to be submitted to Dockstore to enable using its [standardised workflow interfaces](https://docs.dockstore.org/en/stable/advanced-topics/wes/cli-wes-tutorial.html) to run them directly from the commandline or through existing cloud computing platforms from [Dockstore.org](dockstore.org) (currently supports running on [AnVIL](https://anvilproject.org), [Cavatica](https://www.cavatica.org), [CGC](https://www.cancergenomicscloud.org), [DNAnexus](https://www.dnanexus.com), [Galaxy](https://usegalaxy.org), [Nextflow Tower](https://seqera.io/tower), and [Terra](https://terra.bio)).
