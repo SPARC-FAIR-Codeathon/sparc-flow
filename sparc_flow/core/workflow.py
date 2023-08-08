@@ -64,7 +64,7 @@ class Workflow(WorkflowGenerator):
                                                                 # an attempt is made above, but it doesn't work currently.
 
         self.add_outputs(final_answer=tool_output) 
-        self.save(f'workflow.cwl', mode='abs')    
+        self.save(f'{self.tool_dir}/workflow.cwl', mode='abs')    
          
     def run(self, runner="cwltool"):  
 
