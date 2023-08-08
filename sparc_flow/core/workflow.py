@@ -41,11 +41,16 @@ class Workflow(WorkflowGenerator):
         self.input_value = None 
         self.input_name = None
         self.tool_dir = None   
-        self.tools = None
+        self.tools = None 
+        self.workflow_dir = None
 
-    def set_steps(self, tool_path):  
+    def set_steps(self, tool_path):   
+        # load steps from tool directory
         self.load(steps_dir=tool_path) 
-        self.tool_dir = tool_path  
+        self.tool_dir = tool_path   
+        # use tool directory to determine workflow directory (standise as one folder up from tool directory) 
+        self.workflow_dir = os.path.normpath(tool_path + os.sep + os.pardir) 
+        # create list of tools in tool directory
         tools = [tool for tool in os.listdir(tool_path) if tool.endswith(".cwl")] 
         self.tools = [tool.split(".")[0] for tool in tools] 
 
@@ -66,6 +71,7 @@ class Workflow(WorkflowGenerator):
                                                                 # an attempt is made above, but it doesn't work currently.
 
         self.add_outputs(final_answer=tool_output) 
+
         self.save(f'{self.tool_dir}/workflow.cwl', mode='abs')    
 
     def create_sds(self, path):
@@ -75,7 +81,6 @@ class Workflow(WorkflowGenerator):
         save_dir= path
         dataset_tool.set_dataset_path(save_dir)
         dataset_tool.save(save_dir)
-
 
          
     def run(self, runner="cwltool"):  
@@ -89,12 +94,12 @@ class Workflow(WorkflowGenerator):
                             'workflow', 
                             'launch',
                             '--local-entry'
-                        f'{self.tool_dir}/workflow.cwl', 
+                        f'{self.workflow_dir}/workflow.cwl', 
                             '--json',
                         f'{self.tool_dir}/inp_job.json']) 
         else:
             subprocess.run(['cwltool', 
-                            f'{self.tool_dir}/workflow.cwl', 
+                            f'{self.workflow_dir}/workflow.cwl', 
                             f'{self.tool_dir}/inp_job.json']) 
 
 class Tool:  
