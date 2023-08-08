@@ -12,7 +12,7 @@ outputs:
     type: File
 steps:
   sparc_data_tool:
-    run: ./tool_SDS/sparc_data_tool.cwl
+    run: ./tools/sparc_data_tool.cwl
     in:
       number: number
     out:
