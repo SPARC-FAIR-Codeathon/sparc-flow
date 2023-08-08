@@ -1,7 +1,9 @@
 from scriptcwl import WorkflowGenerator
 from sparc_me import Dataset
+import yaml
 import subprocess
 import shutil
+import json
 import os
 
 class Workflow(WorkflowGenerator):     
@@ -131,24 +133,38 @@ class Workflow(WorkflowGenerator):
         #                 f'{self.tool_dir}/workflow.cwl', 
         #                 f'--{self.input_name}', str(self.input_value)]) 
 
-        try: 
-            if(runner == "dockstore"):
-                subprocess.run(['dockstore', 
-                                'workflow', 
-                                'launch',
-                                '--local-entry',
-                            f'{self.workflow_dir}/workflow.cwl', 
-                                '--json',
-                            f'{self.workflow_dir}/inp_job.json']) 
-            else:
-                subprocess.run(['cwltool', 
-                                f'{self.workflow_dir}/workflow.cwl', 
-                                f'{self.workflow_dir}/inp_job.json'])  
-        except: 
+        # try: 
+        #     if(runner == "dockstore"):
+        #         subprocess.run(['dockstore', 
+        #                         'workflow', 
+        #                         'launch',
+        #                         '--local-entry',
+        #                     f'{self.workflow_dir}/workflow.cwl', 
+        #                         '--json',
+        #                     f'{self.workflow_dir}/inp_job.json']) 
+        #     else:
+        #         subprocess.run(['cwltool', 
+        #                         f'{self.workflow_dir}/workflow.cwl', 
+        #                         f'{self.workflow_dir}/inp_job.json'])  
+        # except: 
              
+        #     subprocess.run(['python', 
+        #                     f'{self.tool_dir}/sparc_data_tool.py',  
+        #                     f'{self.workflow_dir}/inp_job.json'])
+
+        if(runner == "dockstore"):
+            subprocess.run(['dockstore', 
+                            'workflow', 
+                            'launch',
+                            '--local-entry'
+                        f'{self.workflow_dir}/workflow.cwl', 
+                            '--json',
+                        f'{self.workflow_dir}/inp_job.json']) 
+        else:
             subprocess.run(['python', 
-                            f'{self.tool_dir}/sparc_data_tool.py',  
-                            f'{self.workflow_dir}/inp_job.json'])
+                        f'{self.tool_dir}/sparc_data_tool.py',  
+                        "262"])
+
 
 class Tool:  
         # create docstring below with methods, parameters and return values 

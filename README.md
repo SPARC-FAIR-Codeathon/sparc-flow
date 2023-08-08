@@ -51,25 +51,25 @@ The NIH Common Fund program on **[Stimulating Peripheral Activity to Relieve Con
 **Workflows can be developed that apply tools** (e.g. segmentation of images, or running of computational physiology simulations) in a series of steps **to process the original data and generate new results, outcomes, and knowledge**. These results (derived data) can be stored in a new standardised dataset and potentially be [contributed to the SPARC Portal](https://docs.sparc.science/docs/submitting-a-dataset-to-sparc) to support further scientific advances.
 
 ## The problem
-There is **currently no option for users of SPARC data to**:
-- **easily describe workflows and tools in a FAIR manner**
+There is **currently no option for users to**:
+- **easily describe workflows and tools, which process SPARC data, in a FAIR manner**
 - **easily run such workflows locally or from cloud computing platforms such as oSPARC**
 - **ensure reproducibility of workflow results**
-- **easily reuse tools developed for processing SPARC data in new workflows** (tools are currently bundled within and tailored to specific SPARC datasets)
+- **easily reuse tools developed for processing SPARC data in new workflows** (tools are currently bundled within and tailored to specific SPARC datasets).
 
 ## Our solution - sparc-flow
 To address this problem, we have **developed a Python module called the SPARC Flow (sparc-flow)** that can be used to describe tools and workflows for processing SPARC datasets in accordance with FAIR principles:
 - Provides an easy-to-use python-based application programming interface (API) to enable **tools** and **workflows** to be **described in a language agnostic manner**.
 - Enables the parameters used for running workflows to be stored with the workflow description along with a copy of its associated tools to **facilitate interoperability and the reproducibility of workflow results**.
 - Enables **workflows and tools** to be **independently stored in SDS datasets**, **ready to be contributed to the SPARC portal** to enable reuse by others.
-- Provides the ability to **save and load workflows and tools directly from SDS datasets**.
-- Provides the abilty to run workflows:
+- Provides the to **save and load workflows and tools directly from/to SDS datasets** using [sparc-me](https://github.com/SPARC-FAIR-Codeathon/sparc-me).
+- Provides the abilty to **run workflows**:
   - locally;
   - on existing cloud computing platforms such as [oSPARC](https://osparc.io/); or
   - help prepare the workflow to be submitted to Dockstore to enable using its [standardised workflow interfaces](https://docs.dockstore.org/en/stable/advanced-topics/wes/cli-wes-tutorial.html) to run them directly from the commandline or through existing cloud computing platforms from [Dockstore.org](dockstore.org) (currently supports running on [AnVIL](https://anvilproject.org), [Cavatica](https://www.cavatica.org), [CGC](https://www.cancergenomicscloud.org), [DNAnexus](https://www.dnanexus.com), [Galaxy](https://usegalaxy.org), [Nextflow Tower](https://seqera.io/tower), and [Terra](https://terra.bio)).
 - Provides **tutorials** that demonstrate each of the above features.
-- [Proposes guidelines for FAIR-use of tools and workflows](https://docs.google.com/document/d/1tBzDEivbl_jgdMZX6E-NYFH4vE3dlnwv/edit)
-- Provides best practices guidance in tutorials on how to use these guidelines.
+- **[Proposes guidelines for FAIR-use of tools and workflows](https://docs.google.com/document/d/1tBzDEivbl_jgdMZX6E-NYFH4vE3dlnwv/edit)**
+- **Provides best practices guidance in tutorials** on how to use these guidelines.
 
 **If you find sparc-flow useful, please add a GitHub Star to support developments!**
 
@@ -93,6 +93,7 @@ sparc-flow will elevate the impact of the SPARC program by providing the fundame
 Ultimately, **our vision is to include standardised workflow and tool descriptions in knowledge bases to support automated assembly and execution of workflows** (e.g. for [creating digital tiwns for precision medicine applications](https://doi.org/10.52843/cassyni.6d6bvf)).
   
 ## Future developments
+- Automate generate of API documentation.
 - support for WDL, Nextflow, and Galaxy workflow languages that are used in scientific research platforms.
 - integrating workflow and tool validators and [checkers](https://docs.dockstore.org/en/stable/advanced-topics/checker-workflows.html).
 - integrating workflow and tool descriptions into knowledge graphs such as [SCKAN](https://docs.sparc.science/docs/accessing-the-sparc-connectivity-knowledge-base-of-the-autonomic-nervous-system-sckan) to support the identification of workflow and tools that are related to specific biological concepts. 
@@ -218,9 +219,9 @@ Fork this repository and submit a pull request to contribute. Before doing so, p
 ### Project structure
 * `/sparc_flow/` - Parent directory of sparc-flow python module.
 * `/sparc_flow/core/` - Core classes of sparc-flow.
-* `/resources/` - Resources for testing sparc-flow. 
-* `/examples/` - Parent directory of sparc-flow examples and tutorials.
-* `/examples/test_data/` - Test data used for sparc-flow examples and tutorials.
+* `/resources/` - Resources that are used in tutorials (e.g. SDS datasets containing workflow and tool descriptions).
+* `/tutorials/` - Parent directory of tutorials for using sparc-flow.
+* `/development_examples/` - Parent directory of examples that were created during the development of sparc-flow.
 * `/docs/images/` - Images used in sparc-flow tutorials.
 
 ## Cite us
