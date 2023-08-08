@@ -9,8 +9,7 @@ outputs:
     type: File
 steps:
   sparc_data_tool:
-    run: 
-      /home/mfre190/src/2023-team-3/examples/sparc_workflow_example/tools/sparc_data_tool.cwl
+    run: /home/mfre190/src/2023-team-3/examples/sparc_flow_api_example/tools/sparc_data_tool.cwl
     in:
       number: number
     out:
